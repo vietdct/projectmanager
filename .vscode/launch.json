@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TestPassword",
+            "request": "launch",
+            "mainClass": "com.cybersoft.qlsv.controller.TestPassword",
+            "projectName": "qlsv"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-QlsvApplication<qlsv>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.cybersoft.qlsv.QlsvApplication",
+            "projectName": "qlsv",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
