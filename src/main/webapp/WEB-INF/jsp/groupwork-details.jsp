@@ -79,20 +79,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="dropdown">
                                 <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#"> 
                                     <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle" />
-                                    <b class="hidden-xs" style=""><h7> Hello!</h7></b> 
                                 	<b class="hidden-xs" > ${currentUserName}</b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <c:url var="profile" value="/profile"/>
-                                        <a href="${profile}">Thông tin cá nhân</a>
+                                        <a href="${profile}">Personal Information</a>
                                     </li>
                                     <li>
                                         <c:url var="groupwork_details" value="/groupwork-details"/>
-                                        <a href="${groupwork_details}">Thống kê công việc</a>
+                                        <a href="${groupwork_details}">Task Detail</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Đăng xuất</a></li>
+                                    <li><a href="/logout">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -102,6 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- /.navbar-top-links -->
                 <!-- /.navbar-static-side -->
             </nav>
+
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -114,22 +114,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li>
                     	<c:url var="user_table" value="/user-table"/>
                         <a href="${user_table}" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Member</span></a>
                     </li>
                     <li>
                     	<c:url var="role_table" value="/role-table"/>
                         <a href="${role_table}" class="waves-effect"><i class="fa fa-modx fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Permission</span></a>
                     </li>
                     <li>
                     	<c:url var="groupwork" value="/groupwork"/>
                         <a href="${groupwork}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Project</span></a>
                     </li>
                     <li>
                     	<c:url var="task" value="/task"/>
                         <a href="${task}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Task</span></a>
                     </li>
                     <li>
                     	<c:url var="blank" value="/blank"/>
@@ -150,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Chi tiết công việc </h4>
+                        <h4 class="page-title">Task Deltails </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
@@ -168,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-in row">
                                 <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E"
                                         class="linea-icon linea-basic"></i>
-                                    <h5 class="text-muted vb">CHƯA BẮT ĐẦU</h5>
+                                    <h5 class="text-muted vb">NOT_STARTED</h5>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                     <h3 class="counter text-right m-t-15 text-danger">20%</h3>
@@ -190,7 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-in row">
                                 <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic"
                                         data-icon="&#xe01b;"></i>
-                                    <h5 class="text-muted vb">ĐANG THỰC HIỆN</h5>
+                                    <h5 class="text-muted vb">IN_PROGRESS</h5>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                     <h3 class="counter text-right m-t-15 text-megna">50%</h3>
@@ -212,7 +212,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-in row">
                                 <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic"
                                         data-icon="&#xe00b;"></i>
-                                    <h5 class="text-muted vb">HOÀN THÀNH</h5>
+                                    <h5 class="text-muted vb">COMPLETED</h5>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-6">
                                     <h3 class="counter text-right m-t-15 text-primary">30%</h3>
@@ -365,7 +365,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- END DANH SÁCH CÔNG VIỆC -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

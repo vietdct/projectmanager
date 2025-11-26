@@ -140,7 +140,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Thêm mới thành viên</h4>
+                        <h4 class="page-title">ADD USER</h4>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -163,16 +163,33 @@
                                             class="form-control form-control-line"> </div>
                                 </div>
                                 <div  class="form-group">
+                                <label  class="col-md-12">UserName</label>
+                                    <div class="col-md-12">
+                                        <input name="userName" value="${user.userName}" type="text" placeholder=" User Name"
+                                            class="form-control form-control-line"> 
+                                            <c:if test="${not empty userNameError}">
+                                                <div style="color:#d9534f;margin-top:4px;">${userNameError}</div>
+                                            </c:if>
+                                    </div>
+                                </div>
+                                <div  class="form-group">
                                     <label for="example-email" class="col-md-12">Email</label>
                                     <div class="col-md-12">
-                                        <input name="email" type="email" placeholder="johnathan@admin.com"
+                                        <input name="email" value="${user.email}" type="email" placeholder="johnathan@admin.com"
                                             class="form-control form-control-line" name="example-email"
-                                            id="example-email"> </div>
+                                            id="example-email"> 
+                                        <c:if test="${not empty emailError}">
+                                            <div style="color:#d9534f;margin-top:4px;">${emailError}</div>
+                                        </c:if>
+                                </div>
                                 </div>
                                 <div  class="form-group">
                                     <label class="col-md-12">Password</label>
                                     <div class="col-md-12">
-                                        <input name="password" type="password"  class="form-control form-control-line">
+                                        <input name="password" type="password" value="${user.password}"  class="form-control form-control-line">
+                                        <c:if test="${not empty passwordError}">
+                                            <div style="color:#d9534f;margin-top:4px;">${passwordError}</div>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <div  class="form-group">
@@ -184,24 +201,29 @@
                                 <div  class="form-group">
                                     <label class="col-sm-12">Select Role</label>
                                     <div class="col-sm-12">
-                                        <select name="roleName" class="form-control form-control-line">
+                                        <select name="roleId" class="form-control form-control-line" required>
+                                            <option value="" disabled selected>-- Select a role --</option>
                                             <c:forEach items="${roles}" var="r">
-                                            	<option value="${r.id}">${r.name}</option>
+                                                <option value="${r.id}">${r.name}</option>
                                             </c:forEach>
                                         </select>
-                                        <div>Count: ${fn:length(roles)}</div>
-                                        <c:if test="${not empty rolesError}">
-                                            <div class="text-danger">${rolesError}</div>
+                                        <c:if test="${not empty successMsg}">
+                                            <div class="alert alert-success alert-toast" role="alert">
+                                                <i class="fa fa-check-circle" style="margin-right:8px;"></i>
+                                                ${successMsg}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
                                         </c:if>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                   		
                                         <button type="submit" class="btn btn-success">Add User</button>
-                                        <a href="user-table.html" class="btn btn-primary">Quay lại</a>
+                                        <a href="${user_table}" class="btn btn-primary">Back</a>
                                     </div>
-                                    <h3 style='color:red;' >${isSuccess}</h3>
+                                    
                                 </div>
                             </form>
                         </div>
@@ -211,12 +233,14 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
+<!-- <script>setTimeout(function(){$('.alert-toast').alert('close');}, 3000); -->
+</script>
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
@@ -228,6 +252,7 @@
     <script src="js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
+    <script src="js/alerts.js"></script>
 </body>
 
 </html>

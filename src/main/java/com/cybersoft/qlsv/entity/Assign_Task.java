@@ -1,0 +1,36 @@
+package com.cybersoft.qlsv.entity;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+
+@Entity
+@Table(name = "assign_task")
+@IdClass(AssignTaskId.class) // <-- thêm dòng này
+public class Assign_Task {
+
+  @Id
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_user", nullable = false)
+  private UserEntity user;
+
+  @Id
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_task", nullable = false)
+  private TaskEntity task;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_status")
+  private StatusEntity status;
+
+
+}

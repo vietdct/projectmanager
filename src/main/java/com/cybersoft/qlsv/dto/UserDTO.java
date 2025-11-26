@@ -1,8 +1,22 @@
 package com.cybersoft.qlsv.dto;
 
-public record UserDTO(int id, String firstName,String lastName, String email,String roleName) {
+import com.cybersoft.qlsv.entity.RoleEntity;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
+@Getter @Setter
+public class UserDTO {
+    private Long id;
+    private String userName;
+    private String email;
+    private String password;
+    private String phone;
+    private String firstName;
+    private String lastName;
+    private Long  roleId;
+    private String roleName;
+    
 }
-// public record TaskDTO( Integer id, String taskName, String projectName, String lastName, LocalDate startDate, LocalDate endDate, String statusName) {
-
-// }

@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskDTO> getTaskUserProject() {
-        List<TaskDTO> listTask = taskRepository.getTaskUserProject();
+        List<TaskDTO> listTask = taskRepository.getTask_User_Project();
        return listTask;
     }
 

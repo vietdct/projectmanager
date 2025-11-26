@@ -1,5 +1,7 @@
 package com.cybersoft.qlsv.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -17,14 +19,19 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+
+@RequiredArgsConstructor
 @Data
 @Entity
 @Table(name = "user")
 public class UserEntity {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
 	@Column(name = "username")
 	private String userName;
@@ -48,8 +55,11 @@ public class UserEntity {
     @JoinColumn(name = "id_role")
     private RoleEntity role;
 
-	@OneToMany(mappedBy = "user")
-	private Set<AssignTaskEntity> assignTasks;
+	// @ManyToMany
+	// @JoinTable(name = "assign_task",
+	// 			joinColumns = @JoinColumn(name ="id_user"),
+	// 			inverseJoinColumns = @JoinColumn(name="id_task"))
+	// private List<TaskEntity> tasks = new ArrayList<>();
 
 
 }

@@ -41,7 +41,8 @@ public class SecurityConfig {
         .authorizeHttpRequests(auth -> auth
             .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
             .requestMatchers("/css/**","/js/**","/images/**","/bootstrap/**","/plugins/**","/fonts/**","/icons/**","/less/**").permitAll()
-            .requestMatchers("/**").permitAll()
+            .requestMatchers("/login").permitAll()
+            .requestMatchers("/admin/**").hasRole("ADMIN")
             // .requestMatchers("/admin/**").hasAuthority("ADMIN")
             .anyRequest().authenticated()
         // "user-table/user-add","/task/task-add","/groupwork/groupwork-add","/role-table/role-add"
@@ -55,7 +56,7 @@ public class SecurityConfig {
             form.failureUrl("/login?error");
             form.permitAll();
        })
-       
+       .exceptionHandling(ex -> ex.accessDeniedPage("/404"))
          .logout(logout -> logout
              .logoutUrl("/logout")
              .logoutSuccessUrl("/login"))

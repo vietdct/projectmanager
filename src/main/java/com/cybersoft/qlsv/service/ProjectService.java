@@ -6,7 +6,5 @@ import com.cybersoft.qlsv.entity.ProjectEntity;
 import com.cybersoft.qlsv.entity.UserEntity;
 
 public interface ProjectService {
-    public List<ProjectEntity> getAllProject();
-
-    public List<ProjectEntity> getAllProjectList();
+    public List<ProjectEntity> getAllProject();  // lấy list project
 } 

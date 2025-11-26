@@ -10,12 +10,12 @@ import com.cybersoft.qlsv.entity.ProjectEntity;
 import com.cybersoft.qlsv.entity.RoleEntity;
 
 @Repository
-public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer> {
+public interface ProjectRepository extends JpaRepository<ProjectEntity, Long> {
         @Query(value = """
                 Select p
                 From ProjectEntity p
             """)
-        List<ProjectEntity> getAllProjectEntity();
+        List<ProjectEntity> getAllProject();
 
 
 }

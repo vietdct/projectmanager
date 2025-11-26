@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  <!DOCTYPE html>
 <html lang="en">
 
@@ -71,20 +72,19 @@
                             <div class="dropdown">
                                 <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#"> 
                                     <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle" />
-                                    <b class="hidden-xs" style=""><h7> Hello!</h7></b> 
                                 	<b class="hidden-xs" > ${currentUserName}</b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <c:url var="profile" value="/profile"/>
-                                        <a href="${profile}">Thông tin cá nhân</a>
+                                        <a href="${profile}">Personal Information</a>
                                     </li>
                                     <li>
                                         <c:url var="groupwork_details" value="/groupwork-details"/>
-                                        <a href="${groupwork_details}">Thống kê công việc</a>
+                                        <a href="${groupwork_details}">Task Detail</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Đăng xuất</a></li>
+                                    <li><a href="/logout">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -106,22 +106,22 @@
                     <li>
                     	<c:url var="user_table" value="/user-table"/>
                         <a href="${user_table}" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Member</span></a>
                     </li>
                     <li>
                     	<c:url var="role_table" value="/role-table"/>
                         <a href="${role_table}" class="waves-effect"><i class="fa fa-modx fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Permission</span></a>
                     </li>
                     <li>
                     	<c:url var="groupwork" value="/groupwork"/>
                         <a href="${groupwork}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Project</span></a>
                     </li>
                     <li>
                     	<c:url var="task" value="/task"/>
                         <a href="${task}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Task</span></a>
                     </li>
                     <li>
                     	<c:url var="blank" value="/blank"/>
@@ -142,11 +142,11 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Danh sách quyền</h4>
+                        <h4 class="page-title">PERMISSION</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
                     	<c:url var="role_add" value="/admin/role-add"/>
-                        <a href="${role_add }" class="btn btn-sm btn-success">Thêm mới</a>
+                        <a href="${role_add }" class="btn btn-sm btn-success">Add Permission</a>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -159,20 +159,57 @@
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Tên Quyền</th>
-                                            <th>Mô Tả</th>
-                                            <th>Hành Động</th>
+                                            <th>Name Permission</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <c:forEach items="${listRoleName}" var="listRoleName">
+                                    <c:forEach items="${listRoleName}" var="r" varStatus="s" >
                                     	<tbody>
                                         <tr>
-                                            <td>${listRoleName.id}</td>
-                                            <td>${listRoleName.name }</td>
-                                            <td>${listRoleName.description }</td>
+                                            <td>${s.index+1}</td>
+                                            <td>${r.name }</td>
+                                            <td>${r.description }</td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xóa</a>
+                                                <c:url var="role_edit" value="admin/role-edit/${r.id}"/>
+                                                <a href="${role_edit}" class="btn btn-sm btn-primary">Edit</a>
+                                                    <c:if test="${not empty successMsg}">
+                                                        <div class="alert alert-success alert-toast" role="alert">
+                                                            <i class="fa fa-check-circle" style="margin-right:8px;"></i>
+                                                            ${successMsg}
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                    </c:if>
+                                                <c:url var="role_delete" value="role-table/delete/${r.id}"/>
+                                                <form action="${role_delete}" method="post" class="inline delete-form" style="display:inline;">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn btn-sm btn-danger" 
+                                                            onclick="return confirm('Are you sure want to delete ?');">
+                                                        Delete
+                                                </button>
+                                                <c:if test="${not empty errorRole}">
+                                                    <div class="alert-seed"
+                                                        data-type="danger"
+                                                        data-icon="times-circle"
+                                                        data-text="${fn:escapeXml(errorRole)}"></div>
+                                                    </c:if>
+                                                    <c:if test="${not empty errorMsg}">
+                                                    <div class="alert-seed"
+                                                        data-type="danger"
+                                                        data-icon="times-circle"
+                                                        data-text="${fn:escapeXml(errorMsg)}"></div>
+                                                    </c:if>
+                                                    <c:if test="${not empty successMsg}">
+                                                    <div class="alert-seed"
+                                                        data-type="success"
+                                                        data-icon="check-circle"
+                                                        data-text="${fn:escapeXml(successMsg)}"></div>
+                                                    </c:if>
+
+                                                
+                                                </form>
                                             </td>
                                         </tr>
                                         
@@ -186,7 +223,7 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
@@ -204,11 +241,9 @@
     <script src="js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
+<script src="js/alerts.js"></script>
+
+
 </body>
 
 </html>

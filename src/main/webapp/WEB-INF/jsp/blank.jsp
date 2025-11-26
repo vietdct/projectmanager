@@ -70,29 +70,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="dropdown">
                                 <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#"> 
                                     <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle" />
-                                    <b class="hidden-xs" style=""><h7> Hello!</h7></b> 
                                 	<b class="hidden-xs" > ${currentUserName}</b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <c:url var="profile" value="/profile"/>
-                                        <a href="${profile}">Thông tin cá nhân</a>
+                                        <a href="${profile}">Personal Information</a>
                                     </li>
                                     <li>
                                         <c:url var="groupwork_details" value="/groupwork-details"/>
-                                        <a href="${groupwork_details}">Thống kê công việc</a>
+                                        <a href="${groupwork_details}">Task Detail</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Đăng xuất</a></li>
+                                    <li><a href="/logout">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
+                </div>
+                <!-- /.navbar-header -->
+                <!-- /.navbar-top-links -->
+                <!-- /.navbar-static-side -->
+            </nav>
+
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -105,22 +105,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li>
                     	<c:url var="user_table" value="/user-table"/>
                         <a href="${user_table}" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Member</span></a>
                     </li>
                     <li>
                     	<c:url var="role_table" value="/role-table"/>
                         <a href="${role_table}" class="waves-effect"><i class="fa fa-modx fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Permission</span></a>
                     </li>
                     <li>
                     	<c:url var="groupwork" value="/groupwork"/>
                         <a href="${groupwork}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Project</span></a>
                     </li>
                     <li>
                     	<c:url var="task" value="/task"/>
                         <a href="${task}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Task</span></a>
                     </li>
                     <li>
                     	<c:url var="blank" value="/blank"/>
@@ -163,7 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

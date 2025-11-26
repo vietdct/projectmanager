@@ -4,6 +4,13 @@
             "type": "java",
             "name": "TestPassword",
             "request": "launch",
+            "mainClass": "com.cybersoft.qlsv.api.TestPassword",
+            "projectName": "qlsv"
+        },
+        {
+            "type": "java",
+            "name": "TestPassword",
+            "request": "launch",
             "mainClass": "com.cybersoft.qlsv.controller.TestPassword",
             "projectName": "qlsv"
         },

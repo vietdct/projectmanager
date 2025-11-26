@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,14 +75,14 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <c:url var="profile" value="/profile"/>
-                                        <a href="${profile}">Thông tin cá nhân</a>
+                                        <a href="${profile}">Personal information</a>
                                     </li>
                                     <li>
                                         <c:url var="groupwork_details" value="/groupwork-details"/>
                                         <a href="${groupwork_details}">Thống kê công việc</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Đăng xuất</a></li>
+                                    <li><a href="#">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -103,22 +104,22 @@
                     <li>
                     	<c:url var="user_table" value="/user-table"/>
                         <a href="${user_table}" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Member</span></a>
                     </li>
                     <li>
                     	<c:url var="role_table" value="/role-table"/>
                         <a href="${role_table}" class="waves-effect"><i class="fa fa-modx fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Permission</span></a>
                     </li>
                     <li>
                     	<c:url var="groupwork" value="/groupwork"/>
                         <a href="${groupwork}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Project</span></a>
                     </li>
                     <li>
                     	<c:url var="task" value="/task"/>
                         <a href="${task}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Task</span></a>
                     </li>
                     <li>
                     	<c:url var="blank" value="/blank"/>
@@ -139,7 +140,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Thêm mới quyền</h4>
+                        <h4 class="page-title">Create New Permission</h4>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -148,26 +149,39 @@
                     <div class="col-md-2 col-12"></div>
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
-                            <form action="role-add" method="post" class="form-horizontal form-material">
+                            <form action="/admin/role-add" method="post" class="form-horizontal form-material">
                                 <div class="form-group">
-                                    <label class="col-md-12">Tên quyền</label>
+                                    <label class="col-md-12">Permission Name</label>
                                     <div class="col-md-12">
-                                        <input name="roleName" type="text" placeholder="Tên quyền"
+                                        <input name="roleName" type="text" placeholder="ADMIN , USER,..."
                                             class="form-control form-control-line" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Mô tả</label>
+                                    <label class="col-md-12">Description</label>
                                     <div class="col-md-12">
-                                        <input name="description" type="text" placeholder="Mô tả" class="form-control form-control-line" />
+                                        <input name="description" type="text" placeholder="" class="form-control form-control-line" />
                                     </div>
+                                    <c:if test="${not empty errorMsg}">
+                                        <div class="alert alert-danger alert-toast" role="alert">
+                                            <i class="fa fa-times-circle" style="margin-right:8px;"></i>
+                                            ${fn:escapeXml(errorMsg)}
+                                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                                        </div>
+                                        </c:if>
+                                        <c:if test="${not empty successMsg}">
+                                        <div class="alert alert-success alert-toast" role="alert">
+                                            <i class="fa fa-check-circle" style="margin-right:8px;"></i>
+                                            ${fn:escapeXml(successMsg)}
+                                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                                        </div>
+                                        </c:if>
                                 </div>
                                 <div class="form-group">
-                                
                                     <div class="col-sm-12">
-                                    
+                                        <c:url var="role_add" value="/admin/role-add"/>
                                         <button type="submit" class="btn btn-success">Add Role</button>
-                                        <a href="role-table.html" class="btn btn-primary">Quay lại</a>
+                                        <a href="${role_table}" class="btn btn-primary">Back</a>
                                     </div>
                                 </div>
                             </form>
@@ -178,7 +192,7 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

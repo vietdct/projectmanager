@@ -15,6 +15,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 @Entity
 @Table(name = "role")
@@ -22,7 +23,7 @@ import java.util.Set;
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
+    private  Long id;
 
     @Column(name = "name")
     private String name;
@@ -31,6 +32,6 @@ public class RoleEntity {
 	private String description;
 
 	@OneToMany(mappedBy = "role")
-	private Set<UserEntity> users;
+	private List<UserEntity> users;
 
 }

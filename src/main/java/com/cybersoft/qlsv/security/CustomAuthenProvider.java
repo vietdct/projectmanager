@@ -30,18 +30,24 @@ public class CustomAuthenProvider implements AuthenticationProvider {
 
     @Override /**Hàm chứng thực */
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String userName = String.valueOf(authentication.getPrincipal());
+        String id = String.valueOf(authentication.getPrincipal());
+        // String userName = String.valueOf(authentication.getPrincipal());
         String password = String.valueOf(authentication.getCredentials());
-        
-        UserEntity userEntity = userRepository.findByUserName(userName);
-        if(userEntity == null || !passwordEncoder.matches(password, userEntity.getPassword())){
-            throw new BadCredentialsException("Username hoặc mật khẩu không đúng");
-        }
-               Collection<? extends GrantedAuthority> authorities = List.of( new SimpleGrantedAuthority(userEntity.getRole().getName())) // ví dụ: "ROLE_USER"
-                ;
 
-        // TRẢ VỀ token mới đã authenticated = true
-        return new UsernamePasswordAuthenticationToken(userName, null, authorities);
+        
+        UserEntity userEntity = userRepository.findByUserName(id);
+        if(userEntity == null){
+            userEntity = userRepository.findByEmail(id);
+        }
+        if( userEntity == null || !passwordEncoder.matches(password, userEntity.getPassword())){
+           throw new BadCredentialsException("UserName/Email or Password is Incorrect");
+        }
+        String role = userEntity.getRole().getName();
+        if(!role.startsWith("ROLE_")){
+            role =  "ROLE_"+role;
+        }
+        var authorities = List.of(new SimpleGrantedAuthority(role));
+         return new UsernamePasswordAuthenticationToken(id, password,authorities);
     }
 
     @Override /*Định nghĩa của tham số Authentication mà đang được truyền ở hàm chứng thực */

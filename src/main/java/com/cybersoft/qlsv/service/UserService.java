@@ -7,9 +7,13 @@ import com.cybersoft.qlsv.entity.RoleEntity;
 import com.cybersoft.qlsv.entity.UserEntity;
 
 public interface UserService {
-    public List<UserEntity> getNameUser();
+    public List<UserEntity> getAllUsers();  //lấy list user
 
     public List<UserEntity> getUserRole();
 
-    public List<UserEntity> createUser();
+    public UserEntity getAllUser (Long id);
+
+    public UserDTO save (UserDTO uDto); // create , update user
+
+    public boolean deleteUser (Long id);
 }

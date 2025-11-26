@@ -24,6 +24,7 @@ $(document).ready(function() {
           });
 
      });
+     
       $(".tst3").click(function(){
            $.toast({
             heading: 'Welcome to my Pixel admin',

@@ -71,20 +71,19 @@
                             <div class="dropdown">
                                 <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#"> 
                                     <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle" />
-                                    <b class="hidden-xs" style=""><h7> Hello!</h7></b> 
                                 	<b class="hidden-xs" > ${currentUserName}</b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <c:url var="profile" value="/profile"/>
-                                        <a href="${profile}">Thông tin cá nhân</a>
+                                        <a href="${profile}">Personal Information</a>
                                     </li>
                                     <li>
                                         <c:url var="groupwork_details" value="/groupwork-details"/>
-                                        <a href="${groupwork_details}">Thống kê công việc</a>
+                                        <a href="${groupwork_details}">Task Detail</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Đăng xuất</a></li>
+                                    <li><a href="/logout">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -94,6 +93,7 @@
                 <!-- /.navbar-top-links -->
                 <!-- /.navbar-static-side -->
             </nav>
+
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -106,22 +106,22 @@
                     <li>
                     	<c:url var="user_table" value="/user-table"/>
                         <a href="${user_table}" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Member</span></a>
                     </li>
                     <li>
                     	<c:url var="role_table" value="/role-table"/>
                         <a href="${role_table}" class="waves-effect"><i class="fa fa-modx fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Permission</span></a>
                     </li>
                     <li>
                     	<c:url var="groupwork" value="/groupwork"/>
                         <a href="${groupwork}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Project</span></a>
                     </li>
                     <li>
                     	<c:url var="task" value="/task"/>
                         <a href="${task}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Task</span></a>
                     </li>
                     <li>
                     	<c:url var="blank" value="/blank"/>
@@ -142,11 +142,11 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Danh sách dự án</h4>
+                        <h4 class="page-title">PROJECTS</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
                     	<c:url var="groupwork_add" value="/admin/groupwork-add"/>
-                        <a href="${groupwork_add }" class="btn btn-sm btn-success">Thêm mới</a>
+                        <a href="${groupwork_add }" class="btn btn-sm btn-success">Add Project</a>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -159,10 +159,10 @@
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Tên Dự Án</th>
-                                            <th>Ngày Bắt Đầu</th>
-                                            <th>Ngày Kết Thúc</th>
-                                            <th>Hành Động</th>
+                                            <th>Project Name</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <c:forEach items="${listProject}" var="listProjects">
@@ -173,9 +173,9 @@
                                             <td>${listProjects.startDate }</td>
                                             <td>${listProjects.endDate }</td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary">Sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xóa</a>
-                                                <a href="groupwork-details.html" class="btn btn-sm btn-info">Xem</a>
+                                                <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                                <a href="groupwork-details.html" class="btn btn-sm btn-info">View</a>
                                             </td>
                                         </tr>
                                         
@@ -189,7 +189,7 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -25,9 +28,16 @@ public class ProjectAPI {
 
     @GetMapping("")
     public String showGr(Model model){
-        model.addAttribute("listProject", projectService.getAllProjectList());
+        model.addAttribute("listProject", projectService.getAllProject());
 
         return "groupwork";
+    }
+
+    @PostMapping("/groupwork-details")
+    public String postGroupWorkDetails(@RequestBody String entity) {
+        
+        
+        return "redirect:/groupwork-details";
     }
 
 

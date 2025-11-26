@@ -12,23 +12,15 @@ import com.cybersoft.qlsv.service.ProjectService;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
-    // @Autowired
-    // private ProjectEntity projectEntity;
 
     @Autowired
     private ProjectRepository projectRepository;
 
     @Override
     public List<ProjectEntity> getAllProject() {
-        List<ProjectEntity> listProject = new ArrayList<>();
-        listProject = projectRepository.findAll();
+        List<ProjectEntity> listProject= projectRepository.findAll(); 
         return listProject;
     }
 
-    @Override
-    public List<ProjectEntity> getAllProjectList() {
-       List<ProjectEntity> listProject = projectRepository.getAllProjectEntity();
-       return listProject;
-    }
 
 }

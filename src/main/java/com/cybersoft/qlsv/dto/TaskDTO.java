@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskDTO {
-    private Integer id;
+    private Long id;
     private String name;
     private String projectName;
     private String LastName;

@@ -10,7 +10,7 @@ import com.cybersoft.qlsv.dto.TaskDTO;
 import com.cybersoft.qlsv.entity.TaskEntity;
 
 @Repository
-public interface TaskRepository extends JpaRepository<TaskEntity,Integer> {
+public interface TaskRepository extends JpaRepository<TaskEntity,Long> {
        
     
         @Query(value = """
@@ -18,10 +18,11 @@ public interface TaskRepository extends JpaRepository<TaskEntity,Integer> {
                     From TaskEntity t
                     Join  t.project p
                     Join  t.status st
-                    Join  t.assignTasks at
-                    Join  at.user u 
+                    Join  Assign_Task at on at.task = t
+                    join  at.user u  
 
                 """)
-            public List<TaskDTO> getTaskUserProject();
+            public List<TaskDTO> getTask_User_Project();
     
+        
 }

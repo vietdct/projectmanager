@@ -17,7 +17,7 @@ import lombok.Data;
 public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -25,6 +25,5 @@ public class StatusEntity {
     @OneToMany(mappedBy = "status")
     private Set<TaskEntity> tasks;
 
-    @OneToMany(mappedBy = "status")
-    private Set<AssignTaskEntity> assignTaskEntities;
+
 }

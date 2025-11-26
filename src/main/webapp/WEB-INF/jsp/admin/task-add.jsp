@@ -69,29 +69,29 @@
                             <div class="dropdown">
                                 <a class="profile-pic dropdown-toggle" data-toggle="dropdown" href="#"> 
                                     <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle" />
-                                    <b class="hidden-xs" style=""><h7> Hello!</h7></b> 
                                 	<b class="hidden-xs" > ${currentUserName}</b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <c:url var="profile" value="/profile"/>
-                                        <a href="${profile}">Thông tin cá nhân</a>
+                                        <a href="${profile}">Personal Information</a>
                                     </li>
                                     <li>
                                         <c:url var="groupwork_details" value="/groupwork-details"/>
-                                        <a href="${groupwork_details}">Thống kê công việc</a>
+                                        <a href="${groupwork_details}">Task Detail</a>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Đăng xuất</a></li>
+                                    <li><a href="/logout">LogOut</a></li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
+                </div>
+                <!-- /.navbar-header -->
+                <!-- /.navbar-top-links -->
+                <!-- /.navbar-static-side -->
+            </nav>
+
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -104,22 +104,22 @@
                     <li>
                     	<c:url var="user_table" value="/user-table"/>
                         <a href="${user_table}" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Member</span></a>
                     </li>
                     <li>
                     	<c:url var="role_table" value="/role-table"/>
                         <a href="${role_table}" class="waves-effect"><i class="fa fa-modx fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Quyền</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Permission</span></a>
                     </li>
                     <li>
                     	<c:url var="groupwork" value="/groupwork"/>
                         <a href="${groupwork}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Dự án</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Project</span></a>
                     </li>
                     <li>
                     	<c:url var="task" value="/task"/>
                         <a href="${task}" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i><span class="hide-menu">Công việc</span></a>
+                                aria-hidden="true"></i><span class="hide-menu">Task</span></a>
                     </li>
                     <li>
                     	<c:url var="blank" value="/blank"/>
@@ -140,7 +140,7 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Thêm mới công việc</h4>
+                        <h4 class="page-title">ADD NEW TASK</h4>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -151,10 +151,10 @@
                         <div class="white-box">
                             <form action="task-add" method="post" class="form-horizontal form-material">
                                 <div class="form-group">
-                                    <label class="col-md-12">Dự án</label>
+                                    <label class="col-md-12">Project Name</label>
                                     <div class="col-md-12">
                                         <select name="idRoleProject" class="form-control form-control-line">
-                                            <c:forEach items="${listprojects}" var="itemsProject">
+                                            <c:forEach items="${listNameProjects}" var="itemsProject">
                                             	<option> ${itemsProject.name}</option>
                                             </c:forEach>
                                             
@@ -162,17 +162,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Tên công việc</label>
+                                    <label class="col-md-12">Task Name</label>
                                     <div class="col-md-12">
                                         <input type="text" name="taskName" placeholder="Tên công việc"
                                             class="form-control form-control-line">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Người thực hiện</label>
+                                    <label class="col-md-12">Performed by</label>
                                     <div class="col-md-12">
                                         <select name="assignee" class="form-control form-control-line">
-                                            <c:forEach items="${listNameUser}" var="itemRoleUser">
+                                            <c:forEach items="${listNameUsers}" var="itemRoleUser">
                                             	<option>${itemRoleUser.lastName }</option>
                                             </c:forEach>
                                            
@@ -180,14 +180,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Ngày bắt đầu</label>
+                                    <label class="col-md-12">Start Date</label>
                                     <div class="col-md-12">
                                         <input name="start_day" type="text" placeholder="dd/MM/yyyy"
                                             class="form-control form-control-line"> 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">Ngày kết thúc</label>
+                                    <label class="col-md-12">End Date</label>
                                     <div class="col-md-12">
                                         <input name="end_day" type="text" placeholder="dd/MM/yyyy"
                                             class="form-control form-control-line"> 
@@ -195,8 +195,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-success">Lưu lại</button>
-                                        <a href="task.html" class="btn btn-primary">Quay lại</a>
+                                        <button type="submit" class="btn btn-success">ADD Task</button>
+                                        <a href="task.html" class="btn btn-primary">BACK</a>
                                     </div>
                                 </div>
                             </form>
@@ -207,7 +207,7 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; myclass.com </footer>
+            <footer class="footer text-center"> 2025 &copy; tranquocvietvtq@gmail.com </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

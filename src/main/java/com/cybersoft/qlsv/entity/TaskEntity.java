@@ -1,7 +1,8 @@
 package com.cybersoft.qlsv.entity;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -24,7 +26,7 @@ public class TaskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id ;
+    private Long id ;
 
     @Column(name = "name")
     private String name;
@@ -43,6 +45,6 @@ public class TaskEntity {
     @JoinColumn(name = "id_status")
     private StatusEntity status;
 
-    @OneToMany(mappedBy = "task")
-    private Set<AssignTaskEntity> assignTasks;
+    // @ManyToMany(mappedBy = "tasks")
+    // private List<UserEntity> users = new ArrayList<>();
 }

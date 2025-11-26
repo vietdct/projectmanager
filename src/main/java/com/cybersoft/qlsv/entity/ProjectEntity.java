@@ -1,6 +1,7 @@
 package com.cybersoft.qlsv.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -19,7 +20,7 @@ import lombok.Data;
 public class ProjectEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -31,5 +32,5 @@ public class ProjectEntity {
     private LocalDate endDate;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-    private Set<TaskEntity> tasks;
+    private List<TaskEntity> tasks;
 }

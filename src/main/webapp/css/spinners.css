@@ -3,6 +3,31 @@
   height: 31px;
   text-align: center;
 }
+.alert-toast {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  z-index: 1050;               /* cao hơn header/sidebar */
+  min-width: 300px;
+  padding-right: 38px;
+  border: 0;
+  border-left: 5px solid #28a745;
+  background: #eaf8ef;
+  color: #155724;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  border-radius: 12px;
+  animation: toastIn .25s ease-out;
+}
+.alert-toast .close {
+  position: absolute; right: 10px; top: 6px;
+  font-size: 22px; opacity: .55;
+}
+.alert-toast .close:hover { opacity: .95; }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .cssload-speeding-wheel {
   width: 31px;
