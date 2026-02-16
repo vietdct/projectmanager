@@ -241,6 +241,19 @@
     <script src="js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/custom.min.js"></script>
+    <script>
+        fetch("/api/roles")
+        .then(r => {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+        })
+        .then(roles => {
+            console.log(roles);
+        })
+        .catch(err => {
+            console.error("Fetch error:", err);
+        });
+    </script>
 <script src="js/alerts.js"></script>
 
 

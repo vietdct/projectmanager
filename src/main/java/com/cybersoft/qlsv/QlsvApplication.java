@@ -8,8 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class QlsvApplication {
 
 	public static void main(String[] args) {
-		
-		
+		 
 		SpringApplication.run(QlsvApplication.class, args);
 	}
 

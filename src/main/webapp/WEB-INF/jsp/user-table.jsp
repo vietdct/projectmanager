@@ -225,6 +225,19 @@
             $('#example').DataTable();
         });
     </script>
+    <script>
+        fetch("/api/users")
+        .then(r => {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+        })
+        .then(users => {
+            console.log(users);
+        })
+        .catch(err => {
+            console.error("Fetch error:", err);
+        });
+    </script>
     <script src="js/user-table.js"></script>
 </body>
 

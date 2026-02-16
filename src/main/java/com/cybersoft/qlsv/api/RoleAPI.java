@@ -39,7 +39,6 @@ public class RoleAPI {
     @Autowired
     private UserRepository userRepository;
 
-    
     @Autowired
     private RoleService roleService;
 
